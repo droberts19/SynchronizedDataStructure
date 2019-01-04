@@ -1,7 +1,7 @@
 package sample;
 
 public class Controller implements Runnable {
-    private int z = 1;
+    private int z = 0;
     private int a = 0;
 
 
@@ -19,6 +19,9 @@ public class Controller implements Runnable {
             }
             if (a == 100) {
                 z = 2;
+            }
+            if (a == 0) {
+                z = 1;
             }
         }
     }
