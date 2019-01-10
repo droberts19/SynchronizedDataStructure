@@ -1,32 +1,29 @@
 package sample;
 
-public class Controller implements Runnable {
-    private int z = 0;
-    private int a = 0;
+public class Controller {
 
+    // Fields
+    Object[] array;
+    int putloc = 0;
+    int getloc = 0;
 
-    private void doThings() {
-        System.out.println();
-        System.out.println("Count up to 100 and back down to 0");
-        for (int i = 0; i < 200; i++) {
-            if (z == 1) {
-                a = a + 1;
-                System.out.println(a);
-            }
-            if (z == 2) {
-                a = a - 1;
-                System.out.println(a);
-            }
-            if (a == 100) {
-                z = 2;
-            }
-            if (a == 0) {
-                z = 1;
-            }
+    // Constructors
+    Controller() {
+        array = new Object[100];
+    }
+
+    // Methods
+    public void put(Object b) {
+        if (putloc < 100) {
+            array[putloc] = b;
+            putloc = putloc + 1;
         }
     }
 
-    public void run() {
-        doThings();
+    Object get() {
+        if (getloc < 100) {
+            getloc = getloc + 1;
+        }
+        return array[getloc];
     }
 }
