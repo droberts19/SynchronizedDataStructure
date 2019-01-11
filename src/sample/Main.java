@@ -8,13 +8,12 @@ public class Main {
 
         Controller c = new Controller();
 
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 200; i++) {
             c.put(i);
+        }
+        for (int i = 0; i < 200; i++) {
             System.out.println(c.get());
         }
-        for (int i = 0; i < 100; i++) {
-        }
-
 
         /*Put doPut = new Put(c);
         Get doGet = new Get(c);
