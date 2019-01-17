@@ -17,17 +17,16 @@ public class Controller {
             array[putloc] = b;
             putloc = putloc + 1;
         } else {
-            System.out.println("put failed; please get() some");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
-    Object get() {
+    synchronized Object get() {
         if (putloc > 0) {
             putloc = putloc - 1;
         } else {
-            System.out.println("get failed; please put() some");
+            return null;
         }
         return array[putloc];
     }

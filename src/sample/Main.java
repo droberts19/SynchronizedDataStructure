@@ -15,13 +15,15 @@ public class Main {
             System.out.println(c.get());
         }*/
 
-        Put doPut = new Put(c);
-        Get doGet = new Get(c);
+        Put doPut = new Put(c, 300);
+        Get doGet = new Get(c, 300);
 
-        Thread getThread = new Thread(doGet);
-        getThread.start();
         Thread putThread = new Thread(doPut);
         putThread.start();
+        Thread getThread = new Thread(doGet);
+        getThread.start();
+
+
 
     }
 }

@@ -3,22 +3,20 @@ package sample;
 public class Put implements Runnable {
 
     Controller p;
-    private int id;
-    private int puts;
+    private int limit;
 
-    Put(Controller put, int Id, int howMany) {
+    Put(Controller put, int Limit) {
         p = put;
-        id = Id;
-        puts = howMany;
+        limit = Limit;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < puts; i++) {
-            boolean didPut = p.put(id);
+        for (int i = 0; i < limit; i++) {
+            boolean didPut = p.put(i);
             while (!didPut) {
                 Thread.currentThread().yield();
-                didPut = p.put(id);
+                didPut = p.put(i);
             }
         }
         System.out.println("Put was done");
