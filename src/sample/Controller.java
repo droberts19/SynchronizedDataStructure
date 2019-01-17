@@ -5,38 +5,30 @@ public class Controller {
     // Fields
     Object[] array;
     int putloc = 0;
-    int getloc = 0;
-    boolean doiget = false;
 
     // Constructors
     Controller() {
-        array = new Object[101];
+        array = new Object[100];
     }
 
     // Methods
-    public void put(Object b) {
-        if (doiget == false) {
-            if (putloc < 100) {
-                putloc = putloc + 1;
-                array[putloc] = b;
-            } else {
-                System.out.println("put failed; please get() some");
-                doiget = true;
-                putloc = 0;
-            }
+    synchronized boolean put(Object b) {
+        if (putloc < 100) {
+            array[putloc] = b;
+            putloc = putloc + 1;
+        } else {
+            System.out.println("put failed; please get() some");
+            return true;
         }
+        return false;
     }
 
     Object get() {
-        if (doiget == true) {
-            if (getloc < 100) {
-                getloc = getloc + 1;
-            } else {
-                System.out.println("get failed; please put() some");
-                doiget = false;
-                getloc = 0;
-            }
+        if (putloc > 0) {
+            putloc = putloc - 1;
+        } else {
+            System.out.println("get failed; please put() some");
         }
-        return array[getloc];
+        return array[putloc];
     }
 }

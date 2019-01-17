@@ -8,20 +8,20 @@ public class Main {
 
         Controller c = new Controller();
 
-        for (int i = 0; i < 200; i++) {
+        /*for (int i = 0; i < 200; i++) {
             c.put(i);
         }
         for (int i = 0; i < 200; i++) {
             System.out.println(c.get());
-        }
+        }*/
 
-        /*Put doPut = new Put(c);
+        Put doPut = new Put(c);
         Get doGet = new Get(c);
 
+        Thread getThread = new Thread(doGet);
+        getThread.start();
         Thread putThread = new Thread(doPut);
         putThread.start();
 
-        Thread getThread = new Thread(doGet);
-        getThread.start();*/
     }
 }
